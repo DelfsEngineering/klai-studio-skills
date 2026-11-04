@@ -27,7 +27,7 @@ At the start of every run, compare any local copy of this skill (for example `.c
   - assistantGuide_slots
   - assistantGuide_fileMaker
   - app_ai_guidance
-- Ask the user which server to use before creating the app or switching servers, even when the source app's server looks like the obvious choice. Never pick one yourself.
+- Server choice. If a tool says a server is required (for example MCP_SERVER_REQUIRED), stop and check how many servers are available. If there is exactly one, use it without asking and note that in the record. If there are several, list them all and ask the user which to use, before creating the app or switching servers, even when the source app's server looks like the obvious choice. Do not recommend one and never pick one yourself.
 
 ## Inputs
 The caller supplies these; the rest of this skill refers to them by name. Defaults come from the team config note at the end.
@@ -62,7 +62,7 @@ Gates block progress. They are not checklist items to tick off one by one: if a 
 1. A written user profile (see principles).
 2. An inventory written to a file per `references/inventory.md`, plus a parity file from `assets/parity-checklist.json` with every item `pending`.
 3. The guides from "Before you build" that the first save needs, read as MCP resources, each one logged. `get_guide` output does not count.
-4. The server, chosen by the user in chat. Do not pick it or recommend one.
+4. The server: the only one available, or the one the user chose in chat when there are several. Do not recommend one.
 If any is missing, stop. No saves, no duplicated pages, no environment changes until it is met.
 
 **Gate B: deploying is not done.** A remix is not done until a browser check has passed:
