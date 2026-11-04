@@ -18,6 +18,8 @@ The first tool call of every run is a fetch of https://raw.githubusercontent.com
 
 Second step, right after the hash and before the profile, inventory or any building: settle the FileMaker server. List the servers available (for example with `list_apps`). If there is exactly one, say you will use it and note that in the record. If there are several, list them all by name and id and ask the user which to use now, so they can answer early and walk away; do not recommend one, never pick one yourself, and do not treat the source app's server as the default. Only a chat reply naming the server counts. Keep reading the source while you wait, but nothing in Gate A's blocked list happens until the answer is in the record. If a tool later says a server is required (for example MCP_SERVER_REQUIRED), use the recorded choice.
 
+Third step, as soon as the server is in the record: create the empty remix app or environment on that server, so there is something to see while the rest builds, and write its ids and preview URL into the record. Then continue with the profile, inventory, guides and the rest. Creating the empty target needs only the commit hash and the server choice; copying pages, deploying and saving still wait for the full Gate A.
+
 ## Before you build (required)
 - Run record: a live checklist at a fixed path. As the first step, create `remix-runs/<source-app-id>/RECORD.md` at the root of the working project, with a checklist of every required step (Before you build items, Gates A, B and C, each Definition of done check, closing summary), each marked done or not done. Update it as each piece of work completes, not at the end, and write decisions there as you make them (profile, inventory and parity files, guides read, server picked, gate results). Before moving to the next step, re-read the record, confirm nothing earlier is still open or skipped, and finish anything that is. Keep the inventory and parity files in the same folder. Use this path every run; if a record for that source app already exists, read it first and add a new dated run section.
 - Re-read the Klai Studio MCP system prompt at the start of every remix. Do not work from memory of an earlier turn.
@@ -57,7 +59,7 @@ Each is stated only here; the rest of the skill relies on it.
 ## Gates (hard stops)
 Gates block progress. They are not checklist items to tick off one by one: if a gate is not met, stop and meet it before going on. Write each gate's evidence into the run record.
 
-**Gate A: before creating the remix app or environment, and before the first `mcp_update_schema` save.** No app creation, environment creation, deploy or copy call (for example `create_app`, `manage_environment`, `deploy_environment`, `duplicate_page`) until all four are in the record. Reading the source is allowed:
+**Gate A: before the first copy, deploy or save into the remix.** Creating the empty remix app or environment is allowed once the commit hash and server are in the record (third step above). No deploy, copy or save call (for example `deploy_environment`, `duplicate_page`, `mcp_update_schema`) until all four are in the record. Reading the source is allowed:
 1. A written user profile (see principles).
 2. An inventory written to a file per `references/inventory.md`, plus a parity file from `assets/parity-checklist.json` with every item `pending`.
 3. The guides from "Before you build" that the first save needs, read as MCP resources, each one logged. `get_guide` output does not count.
