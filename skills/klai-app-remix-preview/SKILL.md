@@ -116,6 +116,7 @@ Done means Gates A, B and C passed and all of these hold. Run the checks, fix wh
 5. Screenshot review: each after-shot checked against the redesign principle and `references/design-principles.md`, the cover against the cover principle.
 6. Gate C passed.
 7. Email drafted, not sent. Record written: which skill file governed the run, profile and how choices follow from it, app and environment ids, preview URL, source connection, inventory and parity files, guides read, signature feature, stub list, renames, screenshots, gate results, principle exceptions, what would make each stub real.
+8. Closing summary at the end of the run: a short list of what shipped and what was skipped or not done. No per-layout tracking.
 
 ## Team config note
 Defaults for this team: backend type FileMaker (server plus helper file); owner Charles Delfs; design questions about the New tag go to Pearson.
