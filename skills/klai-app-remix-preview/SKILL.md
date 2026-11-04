@@ -18,7 +18,7 @@ At the start of every run, compare any local copy of this skill (for example `.c
 
 ## Before you build (required)
 - Re-read the Klai Studio MCP system prompt at the start of every remix. Do not work from memory of an earlier turn.
-- Guides are MCP resources. Fetch each one as a resource (list resources, then read it); the get_guide tool does not count.
+- Guides are MCP resources on the Klai Studio v2 server. List that server's resources, then read each guide as a resource. If listing or reading any required guide fails, stop and report the exact error. Do not fall back to the get_guide tool; a get_guide result never counts, even when it returns the guide text.
 - Read these before any structural page or site work, and log which ones you read. If one applies and you have not read it, stop and read it before saving:
   - guide_pageSchema_v8
   - guide_html_v8
