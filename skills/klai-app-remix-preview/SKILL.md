@@ -117,4 +117,4 @@ Done means Gates A, B and C passed and all of these hold. Run the checks, fix wh
 7. Email drafted, not sent. Record written: which skill file governed the run, profile and how choices follow from it, app and environment ids, preview URL, source connection, inventory and parity files, guides read, signature feature, stub list, renames, screenshots, gate results, principle exceptions, what would make each stub real.
 
 ## Team config note
-Defaults for this team: backend type FileMaker (server plus helper file); owner Charles Delfs; design questions about the New tag go to Pearson; template apps "EOS Traction Board" redesign and "Grant Review Demo".
+Defaults for this team: backend type FileMaker (server plus helper file); owner Charles Delfs; design questions about the New tag go to Pearson.
