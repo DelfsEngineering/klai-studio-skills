@@ -3,7 +3,7 @@ name: klai-app-remix-preview
 description: >-
   Builds a redesigned, fully mocked preview ("remix") of an at-risk client's
   Klai Studio app in a new Dev environment, driven by a written profile of the
-  app's real users, then verifies it and drafts the "we remixed your app" email
+  app's real users, then verifies it
   for the owner. Use when someone asks for a remix, win-back preview, or
   redesigned demo of an existing client's Klai app.
 ---
@@ -38,8 +38,6 @@ The caller supplies these; the rest of this skill refers to them by name. Defaul
 - **Target app/env**: where the remix goes. Default: a new Development environment named "Remix Preview" on the source app.
 - **Frozen copy**: a frozen bookmark copy of the source, if one exists.
 - **CS account**: the client's CS account notes (goals, pain points, history).
-- **Owner**: who reviews the result and sends the email.
-- **Contact**: the client person the email is addressed to.
 - **Backend type**: the client's data backend (for example a database server and helper file).
 - **Template apps**: finished remixes to look at for quality bar, not for styling.
 
@@ -52,7 +50,6 @@ Each is stated only here; the rest of the skill relies on it.
 - Leave the frozen copy, if one exists, untouched, because it is the fixed baseline for testing this skill.
 - Mock every data call, set no backend credentials and no helper database, because the preview must never touch the client's backend.
 - Set `requestHook` to false on every page, because any live hook would leak a request to the backend.
-- Never send email as the owner; draft it, because outreach is the owner's call.
 - Put the remix in a new environment on the source app (same app, same org), because `duplicate_page` only copies within one org. If that is impossible, use another Dev app and log why.
 - Build the remix on V3, because older versions are being retired.
 
@@ -94,13 +91,11 @@ If any is missing, stop. No saves, no duplicated pages, no environment changes u
 
 ## Shoulds
 - Read `LESSONS.md` before redesigning.
-- Draft the owner's email from `assets/email.md`, with a cover image.
 - If the run changed this skill, add a `CHANGELOG.md` entry. Add a new rule only after the same failure is seen in more than one run, and log the triggering runs in `LESSONS.md`.
 
 ## Files in this skill
 - `references/inventory.md`: the MCP read recipe for the inventory.
 - `references/design-principles.md`: anti-slop principles and their sources.
-- `assets/email.md`: the email draft for the owner.
 - `assets/parity-checklist.json`: schema for the parity file.
 - `LESSONS.md`: anti-example, tool quirks and dated notes.
 - `scripts/check_done.py`: machine checks for done items 1 and 3.
@@ -119,7 +114,7 @@ Done means Gates A, B and C passed and all of these hold. Run the checks, fix wh
 4. Contrast: text 4.5:1, large text and icons 3:1, in every theme including the cover.
 5. Screenshot review: each after-shot checked against the redesign principle and `references/design-principles.md`, the cover against the cover principle.
 6. Gate C passed.
-7. Email drafted, not sent. Record written: which skill file governed the run, profile and how choices follow from it, app and environment ids, preview URL, source connection, inventory and parity files, guides read, signature feature, stub list, renames, screenshots, gate results, principle exceptions, what would make each stub real.
+7. Record written: which skill file governed the run, profile and how choices follow from it, app and environment ids, preview URL, source connection, inventory and parity files, guides read, signature feature, stub list, renames, screenshots, gate results, principle exceptions, what would make each stub real.
 8. Closing summary at the end of the run: a short list of what shipped and what was skipped or not done. No per-layout tracking.
 
 ## Team config note

@@ -6,6 +6,6 @@ Common expectations for every scenario:
 - No page is recolour-only; before and after screenshots exist for every page.
 - Parity file has no pending items; every gap has a reason.
 - requestHook is false on every page and zero requests reach the backend or helper.
-- No preset or copied styling; the email is drafted, not sent.
+- No preset or copied styling.
 
 Scenarios: `filemaker-app-with-roles.md`, `phone-first-field-app.md`, `desk-admin-app.md`.
