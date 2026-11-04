@@ -56,7 +56,7 @@ Each is stated only here; the rest of the skill relies on it.
 ## Gates (hard stops)
 Gates block progress. They are not checklist items to tick off one by one: if a gate is not met, stop and meet it before going on. Write each gate's evidence into the run record.
 
-**Gate A: before the first `mcp_update_schema` save.** All four must be in the record:
+**Gate A: before creating the remix app or environment, and before the first `mcp_update_schema` save.** No app creation, environment creation, deploy or copy call (for example `create_app`, `manage_environment`, `deploy_environment`, `duplicate_page`) until all four are in the record. Reading the source is allowed:
 1. A written user profile (see principles).
 2. An inventory written to a file per `references/inventory.md`, plus a parity file from `assets/parity-checklist.json` with every item `pending`.
 3. The guides from "Before you build" that the first save needs, read as MCP resources, each one logged. `get_guide` output does not count.
