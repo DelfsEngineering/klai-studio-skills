@@ -96,7 +96,7 @@ Copy this checklist into the run's record and tick it off:
 10. Extensions. Working UI over mock data only.
 11. Cover. "We remixed {App name}" plus a small "Klai Remix · Preview" label, the client's logo at a confident size, readable in every theme. Show what changed and the signature feature, then "Explore your remix"; one tile per role if there are roles. The only page that says it's a preview: it runs on sample data, and copying the source hooks makes it live.
 12. Stub data calls. Replace each call from step 3 with a local mock of the same shape (model or named action), and keep a stub list.
-13. Quality and browser check. On the profiled device first, then desktop, tablet and phone in each theme: click every page, button, tile, role and theme; look for overlap, clipping, horizontal scroll, and empty, loading and error states. Watch the request log.
+13. Quality and browser check. On the profiled device first, then desktop, tablet and phone in each theme: click every page, button, tile, role and theme; look for overlap, clipping, horizontal scroll, and empty, loading and error states. Watch the request log. This step is required and cannot be skipped; deploying is not done.
 14. Naming check. Compare each page name with what the page now shows and does; rename misleading ones to a plain name the client would recognize. Leave hook names and route slugs unless nothing calls them. Log old, new and why; flag empty or orphaned pages for the owner instead of deleting them.
 15. Parity. Mark each item in the parity file `kept`, `moved` (with where) or `gap` (with reason). Fix gaps you can.
 16. Cover image, then draft the email from `assets/email.md` for the owner.
@@ -111,6 +111,7 @@ Run the machine checks, fix what fails, re-run until all pass, then review scree
 4. Contrast: text 4.5:1, large text and icons 3:1, in every theme including the cover.
 5. Screenshot review: each after-shot checked against step 8 and `references/design-principles.md`, the cover against step 11, every width from step 13.
 6. Checklist complete, email drafted not sent, record written (step 17).
+7. Never worse than the source (hard rule). In the browser, compare the remix side by side with the source app at desktop and phone widths, in both themes. If any page has layout gaps, broken spacing, or a theme that looks worse than the source, fix it and re-run step 13 before finishing. A remix that looks worse than what it started from is not done.
 
 ## Team config note
 Defaults for this team: backend type FileMaker (server plus helper file); owner Charles Delfs; design questions about the New tag go to Pearson; template apps "EOS Traction Board" redesign and "Grant Review Demo".
