@@ -76,7 +76,7 @@ Copy this checklist into the run's record and tick it off:
 5. Environment (`Klai Studio v2:manage_environment`). Create the target app/env, preview then confirm. Don't carry over analytics IDs, test components or helper database names.
 6. Base (`Klai Studio v2:mcp_update_schema` duplicate_page). Copy every source page and register its layout slugs. If duplication isn't possible, rebuild from the inventory and log each fallback.
 7. Read `LESSONS.md`.
-8. Redesign page by page. Set shared tokens and CSS on the site and confirm they deployed. Rework each page for its job and the profiled user; in HTML call `namedAction('name')`, not `action('name')`. Take before and after screenshots of each page; if a page still looks like the source, it isn't done.
+8. Redesign page by page. Set shared tokens and CSS on the site and confirm they deployed. Rework each page for its job and the profiled user, checking it against `references/design-principles.md`; in HTML call `namedAction('name')`, not `action('name')`. Take before and after screenshots of each page; if a page still looks like the source, it isn't done.
 9. Signature feature. One extension the client would want at once, working on mock data, with a visible New tag.
 10. Extensions. Working UI over mock data only.
 11. Cover. "We remixed {App name}" plus a small "Klai Remix · Preview" label, the client's logo at a confident size, readable in every theme. Show what changed and the signature feature, then "Explore your remix"; one tile per role if there are roles. The only page that says it's a preview: it runs on sample data, and copying the source hooks makes it live.
