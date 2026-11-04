@@ -16,6 +16,8 @@ Load on demand: this file is https://raw.githubusercontent.com/DelfsEngineering/
 ## Use the current skill (required, first)
 The first tool call of every run is a fetch of https://raw.githubusercontent.com/DelfsEngineering/klai-studio-skills/main/skills/klai-app-remix-preview/SKILL.md, and the commit hash of main (from https://api.github.com/repos/DelfsEngineering/klai-studio-skills/commits/main) is written into `remix-runs/<source-app-id>/RECORD.md` before any other tool call, including any Klai call. Follow that fetched file. A local copy (for example `.cursor/skills/klai-app-remix-preview/SKILL.md`) or a file already open in the editor does not count as the fetch and never governs the run. If the commit hash is not in the record, the run has not started.
 
+Second step, right after the hash and before the profile, inventory or any building: settle the FileMaker server. List the servers available (for example with `list_apps`). If there is exactly one, say you will use it and note that in the record. If there are several, list them all by name and id and ask the user which to use now, so they can answer early and walk away; do not recommend one, never pick one yourself, and do not treat the source app's server as the default. Only a chat reply naming the server counts. Keep reading the source while you wait, but nothing in Gate A's blocked list happens until the answer is in the record. If a tool later says a server is required (for example MCP_SERVER_REQUIRED), use the recorded choice.
+
 ## Before you build (required)
 - Run record: a live checklist at a fixed path. As the first step, create `remix-runs/<source-app-id>/RECORD.md` at the root of the working project, with a checklist of every required step (Before you build items, Gates A, B and C, each Definition of done check, closing summary), each marked done or not done. Update it as each piece of work completes, not at the end, and write decisions there as you make them (profile, inventory and parity files, guides read, server picked, gate results). Before moving to the next step, re-read the record, confirm nothing earlier is still open or skipped, and finish anything that is. Keep the inventory and parity files in the same folder. Use this path every run; if a record for that source app already exists, read it first and add a new dated run section.
 - Re-read the Klai Studio MCP system prompt at the start of every remix. Do not work from memory of an earlier turn.
@@ -28,7 +30,6 @@ The first tool call of every run is a fetch of https://raw.githubusercontent.com
   - assistantGuide_slots
   - assistantGuide_fileMaker
   - app_ai_guidance
-- Server choice. If a tool says a server is required (for example MCP_SERVER_REQUIRED), stop and check how many servers are available. If there is exactly one, use it without asking and note that in the record. If there are several, list them all and ask the user which to use, before creating the app or switching servers, even when the source app's server looks like the obvious choice. Do not recommend one and never pick one yourself.
 
 ## Inputs
 The caller supplies these; the rest of this skill refers to them by name. Defaults come from the team config note at the end.
