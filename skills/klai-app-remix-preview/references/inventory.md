@@ -1,4 +1,4 @@
-# Inventory recipe (step 2)
+# Inventory recipe
 All reads go through the source connection. Write results to a file as you go; it becomes the parity list.
 
 1. Pages: `list_records_overview` (collection pages) for the source site. Record id, name and layout slug for each.

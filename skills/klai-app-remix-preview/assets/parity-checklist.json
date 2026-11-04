@@ -1,5 +1,5 @@
 {
-  "_doc": "One entry per inventory item (step 2). status starts 'pending'; step 15 sets kept, moved or gap. moved needs 'where'; gap needs 'reason'. Done when no item is pending.",
+  "_doc": "One entry per inventory item (the inventory). status starts 'pending'; the parity pass sets kept, moved or gap. moved needs 'where'; gap needs 'reason'. Done when no item is pending.",
   "source": "{Source connection} / {source environment id}",
   "target": "{Target app/env id}",
   "items": [

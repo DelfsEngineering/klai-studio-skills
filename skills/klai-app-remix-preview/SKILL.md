@@ -11,7 +11,10 @@ description: >-
 
 A remix shows a client their own app, redesigned for the people who actually use it and extended with one or two new features. It is a preview on Dev with mocked data, never a change to their live app.
 
-Load on demand: this file is https://raw.githubusercontent.com/DelfsEngineering/klai-studio-skills/main/skills/klai-app-remix-preview/SKILL.md. Fetch the references, scripts and assets it names from https://raw.githubusercontent.com/DelfsEngineering/klai-studio-skills/main/skills/klai-app-remix-preview/<path>, one at a time as each step needs them. Do not clone the repo.
+Load on demand: this file is https://raw.githubusercontent.com/DelfsEngineering/klai-studio-skills/main/skills/klai-app-remix-preview/SKILL.md. Fetch the references, scripts and assets it names from https://raw.githubusercontent.com/DelfsEngineering/klai-studio-skills/main/skills/klai-app-remix-preview/<path>, one at a time as each part of the work needs them. Do not clone the repo.
+
+## Use the current skill (required, first)
+At the start of every run, compare any local copy of this skill (for example `.cursor/skills/klai-app-remix-preview/SKILL.md`) with https://raw.githubusercontent.com/DelfsEngineering/klai-studio-skills/main/skills/klai-app-remix-preview/SKILL.md. If they differ, follow the GitHub version, and say in the record which file governed the run.
 
 ## Before you build (required)
 - Re-read the Klai Studio MCP system prompt at the start of every remix. Do not work from memory of an earlier turn.
@@ -27,7 +30,7 @@ Load on demand: this file is https://raw.githubusercontent.com/DelfsEngineering/
 - Ask the user which server to use before creating the app or switching servers, even when the source app's server looks like the obvious choice. Never pick one yourself.
 
 ## Inputs
-The caller supplies these; every step refers to them by name. Defaults come from the team config note at the end.
+The caller supplies these; the rest of this skill refers to them by name. Defaults come from the team config note at the end.
 - **App name**: the client's app as they know it.
 - **Source connection**: the read-only MCP connection to the client's source app (an app API-key connector).
 - **Org**: the Klai organization that owns the source app.
@@ -42,7 +45,7 @@ The caller supplies these; every step refers to them by name. Defaults come from
 Missing CS notes, contact or helper details do not stop a run; record what was missing.
 
 ## Tier 1: hard constraints
-Each is stated only here; later steps rely on it.
+Each is stated only here; the rest of the skill relies on it.
 - Build on Dev only, because a preview must never put the client's live app or data at risk.
 - Treat the source connection as read-only, because it reaches the client's real app.
 - Leave the frozen copy, if one exists, untouched, because it is the fixed baseline for testing this skill.
@@ -52,20 +55,49 @@ Each is stated only here; later steps rely on it.
 - Put the remix in a new environment on the source app (same app, same org), because `duplicate_page` only copies within one org. If that is impossible, use another Dev app and log why.
 - Build the remix on V3, because older versions are being retired.
 
-## Tier 2: principles (use judgment)
-- The user profile from step 1 drives every design choice. There are no preset themes or styles; pick the direction from the profile and justify major choices against it in the record. One theme by default; add a second only if the profile gives a reason.
-- Redesign is the goal: rework layout, structure, type, spacing and components on every page. Rewriting page HTML is expected; a layer that only recolours the source's classes is not a remix.
-- Preservation is the end check, not the target: every field, binding, named action and hook call must still do the same job for the user, while the markup around it can change completely (step 15).
-- Outside the cover page the app should feel real: same flows as production, realistic mock data in the client's domain, the client's real catalog, no demo banners.
-- Follow `references/design-principles.md`. Any principle can be broken when the profile calls for it; note it in the record.
-- Examples policy: the core holds no styling examples. If examples are ever added, give three or more deliberately diverse ones in `examples.md`, labelled "illustrative, do not copy".
+## Gates (hard stops)
+Gates block progress. They are not checklist items to tick off one by one: if a gate is not met, stop and meet it before going on. Write each gate's evidence into the run record.
+
+**Gate A: before the first `mcp_update_schema` save.** All four must be in the record:
+1. A written user profile (see principles).
+2. An inventory written to a file per `references/inventory.md`, plus a parity file from `assets/parity-checklist.json` with every item `pending`.
+3. The guides from "Before you build" that apply, read as MCP resources, each one logged. `get_guide` output does not count.
+4. The server, chosen by the user in chat. Do not pick it or recommend one.
+If any is missing, stop. No saves, no duplicated pages, no environment changes until it is met.
+
+**Gate B: deploying is not done.** A remix is not done until a browser check has passed:
+- At 390px and 1280px wide, in every theme, with a screenshot of each page at each width and theme. Check the profiled device first. Click every page, button, tile, role and theme; look for overlap, clipping, horizontal scroll, and empty, loading and error states.
+- Zero requests to the backend or helper in the browser's network log.
+- If no browser is available, mark the check FAILED in the record (not skipped) and do not call the remix done.
+
+**Gate C: never worse than the source.** In the browser, compare the remix side by side with the source app at desktop and phone widths, in both themes. If any page has layout gaps, broken spacing, or a theme that looks worse than the source, fix it and re-run Gate B. A remix that looks worse than what it started from is not done.
+
+## Principles (use judgment)
+- **The user profile drives everything.** Write down who opens the app: role, device, setting, what they need fast, and age, eyesight and tech comfort when known. Use the CS account, the source's content and what the owner said; mark guesses as guesses. There are no preset themes or styles; pick the direction from the profile and justify major choices against it in the record. One theme by default; add a second only if the profile gives a reason.
+- **Know the source before touching it.** The inventory covers every page, layout, data call (with payload shape) and named action; note partial reads and why. From it, list what is dated or hard for the profiled user and 3 to 5 logical extensions. Map roles only when the app has roles; don't invent them.
+- **Environment.** Create the target app/env with `Klai Studio v2:manage_environment`, preview then confirm. Don't carry over analytics IDs, test components or helper database names.
+- **Duplicating is a baseline, not a redesign.** Copy every source page with `duplicate_page` and register its layout slugs; if that isn't possible, rebuild from the inventory and log each fallback. Then redesign: rework layout, structure, type, spacing and components on every page for its job and the profiled user. Set shared tokens and CSS on the site and confirm they deployed. A layer that only recolours the source's classes is not a remix. Take before and after screenshots of each page; if a page still looks like the source, it isn't done.
+- **Preservation is the end check, not the target.** Every field, binding, named action and hook call must still do the same job for the user, while the markup around it can change completely. In HTML call `namedAction('name')`, not `action('name')`.
+- **Signature feature.** One extension the client would want at once, working on mock data, with a visible New tag. Other extensions: working UI over mock data only.
+- **Feels real outside the cover.** Same flows as production, realistic mock data in the client's domain, the client's real catalog, no demo banners.
+- **Cover.** "We remixed {App name}" plus a small "Klai Remix · Preview" label, the client's logo at a confident size, readable in every theme. Show what changed and the signature feature, then "Explore your remix"; one tile per role if there are roles. The only page that says it's a preview: it runs on sample data, and copying the source hooks makes it live.
+- **Stubs.** Replace every data call from the inventory with a local mock of the same shape (model or named action), and keep a stub list.
+- **Naming.** Compare each page name with what the page now shows and does; rename misleading ones to a plain name the client would recognize. Leave hook names and route slugs unless nothing calls them. Log old, new and why; flag empty or orphaned pages for the owner instead of deleting them.
+- **Parity.** Mark each parity item `kept`, `moved` (with where) or `gap` (with reason). Fix gaps you can.
+- **Design principles.** Follow `references/design-principles.md`. Any principle can be broken when the profile calls for it; note it in the record.
+- **Examples policy.** The core holds no styling examples. If examples are ever added, give three or more deliberately diverse ones in `examples.md`, labelled "illustrative, do not copy".
+
+## Shoulds
+- Read `LESSONS.md` before redesigning.
+- Draft the owner's email from `assets/email.md`, with a cover image.
+- If the run changed this skill, add a `CHANGELOG.md` entry. Add a new rule only after the same failure is seen in more than one run, and log the triggering runs in `LESSONS.md`.
 
 ## Files in this skill
-- `references/inventory.md`: the MCP read recipe for step 2.
+- `references/inventory.md`: the MCP read recipe for the inventory.
 - `references/design-principles.md`: anti-slop principles and their sources.
-- `assets/email.md`: the email draft for step 16.
-- `assets/parity-checklist.json`: schema for the parity file (steps 2 and 15).
-- `LESSONS.md`: anti-example, tool quirks and dated notes. Read before step 7.
+- `assets/email.md`: the email draft for the owner.
+- `assets/parity-checklist.json`: schema for the parity file.
+- `LESSONS.md`: anti-example, tool quirks and dated notes.
 - `scripts/check_done.py`: machine checks for done items 1 and 3.
 - `CHANGELOG.md`: dated history of this skill.
 - `evals/`: three test scenarios; see `evals/README.md`.
@@ -74,44 +106,15 @@ Each is stated only here; later steps rely on it.
 - Source connection: reads only (`list_records_overview`, `get_entity_detail`).
 - `Klai Studio v2` (OAuth): all writes on the target app/env: `Klai Studio v2:list_apps`, `Klai Studio v2:manage_environment`, `Klai Studio v2:mcp_update_schema` (including its `duplicate_page` op), `Klai Studio v2:get_entity_detail`, `Klai Studio v2:list_records_overview`, `Klai Studio v2:report_issue`. API-key connections cannot list apps, create apps or deploy.
 
-## Tier 3: workflow
-Copy this checklist into the run's record and tick it off:
-```
-[ ] 1 user profile        [ ] 2 inventory         [ ] 3 assess
-[ ] 4 roles               [ ] 5 environment       [ ] 6 duplicate_page base
-[ ] 7 read LESSONS.md     [ ] 8 page redesign     [ ] 9 signature feature
-[ ] 10 extensions         [ ] 11 cover            [ ] 12 stub data calls
-[ ] 13 quality + browser  [ ] 14 naming check     [ ] 15 parity
-[ ] 16 cover image+email  [ ] 17 record           [ ] 18 changelog
-```
-1. User profile. Write down who opens the app: role, device, setting, what they need fast, and age, eyesight and tech comfort when known. Use the CS account, the source's content and what the owner said; mark guesses as guesses.
-2. Inventory (source connection). Follow `references/inventory.md` and write the result to a file, plus a parity file from `assets/parity-checklist.json` with every item `pending`. Note partial reads and why.
-3. Assess. List every data call and its payload shape (each becomes a stub), what is dated or hard for the profiled user, and 3 to 5 logical extensions.
-4. Roles. Map them only when the app has roles; don't invent them.
-5. Environment (`Klai Studio v2:manage_environment`). Create the target app/env, preview then confirm. Don't carry over analytics IDs, test components or helper database names.
-6. Base (`Klai Studio v2:mcp_update_schema` duplicate_page). Copy every source page and register its layout slugs. If duplication isn't possible, rebuild from the inventory and log each fallback.
-7. Read `LESSONS.md`.
-8. Redesign page by page. Set shared tokens and CSS on the site and confirm they deployed. Rework each page for its job and the profiled user, checking it against `references/design-principles.md`; in HTML call `namedAction('name')`, not `action('name')`. Take before and after screenshots of each page; if a page still looks like the source, it isn't done.
-9. Signature feature. One extension the client would want at once, working on mock data, with a visible New tag.
-10. Extensions. Working UI over mock data only.
-11. Cover. "We remixed {App name}" plus a small "Klai Remix · Preview" label, the client's logo at a confident size, readable in every theme. Show what changed and the signature feature, then "Explore your remix"; one tile per role if there are roles. The only page that says it's a preview: it runs on sample data, and copying the source hooks makes it live.
-12. Stub data calls. Replace each call from step 3 with a local mock of the same shape (model or named action), and keep a stub list.
-13. Quality and browser check. On the profiled device first, then desktop, tablet and phone in each theme: click every page, button, tile, role and theme; look for overlap, clipping, horizontal scroll, and empty, loading and error states. Watch the request log. This step is required and cannot be skipped; deploying is not done.
-14. Naming check. Compare each page name with what the page now shows and does; rename misleading ones to a plain name the client would recognize. Leave hook names and route slugs unless nothing calls them. Log old, new and why; flag empty or orphaned pages for the owner instead of deleting them.
-15. Parity. Mark each item in the parity file `kept`, `moved` (with where) or `gap` (with reason). Fix gaps you can.
-16. Cover image, then draft the email from `assets/email.md` for the owner.
-17. Record: profile and how choices follow from it, app and environment ids, preview URL, source connection, inventory and parity files, signature feature, stub list, renames, screenshots, principle exceptions, what would make each stub real.
-18. Changelog. If the run changed this skill, add a `CHANGELOG.md` entry. Add a new rule only after the same failure is seen in more than one run, and log the triggering runs in `LESSONS.md`.
-
-## Definition of done: verification loop
-Run the machine checks, fix what fails, re-run until all pass, then review screenshots. Checks 1 and 3 are scripted: save each page's form from the target env to `pages.json`, then run `python3 scripts/check_done.py --pages pages.json --parity <parity file>` and keep its output in the record. It must exit 0.
+## Definition of done
+Done means Gates A, B and C passed and all of these hold. Run the checks, fix what fails, re-run until all pass. Checks 1 and 3 are scripted: save each page's form from the target env to `pages.json`, then run `python3 scripts/check_done.py --pages pages.json --parity <parity file>` and keep its output in the record. It must exit 0.
 1. `requestHook` is false on every page (read each page's form).
-2. Zero requests to the backend or helper in the request log during step 13.
+2. Gate B passed, including zero backend or helper requests.
 3. The parity file has no `pending`; every `gap` has a reason.
 4. Contrast: text 4.5:1, large text and icons 3:1, in every theme including the cover.
-5. Screenshot review: each after-shot checked against step 8 and `references/design-principles.md`, the cover against step 11, every width from step 13.
-6. Checklist complete, email drafted not sent, record written (step 17).
-7. Never worse than the source (hard rule). In the browser, compare the remix side by side with the source app at desktop and phone widths, in both themes. If any page has layout gaps, broken spacing, or a theme that looks worse than the source, fix it and re-run step 13 before finishing. A remix that looks worse than what it started from is not done.
+5. Screenshot review: each after-shot checked against the redesign principle and `references/design-principles.md`, the cover against the cover principle.
+6. Gate C passed.
+7. Email drafted, not sent. Record written: which skill file governed the run, profile and how choices follow from it, app and environment ids, preview URL, source connection, inventory and parity files, guides read, signature feature, stub list, renames, screenshots, gate results, principle exceptions, what would make each stub real.
 
 ## Team config note
 Defaults for this team: backend type FileMaker (server plus helper file); owner Charles Delfs; design questions about the New tag go to Pearson; template apps "EOS Traction Board" redesign and "Grant Review Demo".

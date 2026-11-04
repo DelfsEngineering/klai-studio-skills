@@ -1,4 +1,4 @@
-# Email draft (step 16)
+# Email draft
 Draft only, for the owner to review and send. Fill the braces from Inputs and the record.
 
 > Subject: We remixed {App name}
