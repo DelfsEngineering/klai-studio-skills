@@ -1,4 +1,4 @@
-# klai-skills
+# klai-studio-skills
 
 Agent skills for Klai Studio work at Delfs Engineering. Each skill lives in `skills/<name>/` in Agent Skills layout: `SKILL.md` plus optional `scripts/`, `references/` and `assets/`. To use one, point your agent's skills directory at this repo's `skills/` folder, or copy the skill folder into it. Each skill's instructions are in its own `SKILL.md`.
 
