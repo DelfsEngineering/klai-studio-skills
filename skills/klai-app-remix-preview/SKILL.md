@@ -13,6 +13,19 @@ A remix shows a client their own app, redesigned for the people who actually use
 
 Load on demand: this file is https://raw.githubusercontent.com/DelfsEngineering/klai-studio-skills/main/skills/klai-app-remix-preview/SKILL.md. Fetch the references, scripts and assets it names from https://raw.githubusercontent.com/DelfsEngineering/klai-studio-skills/main/skills/klai-app-remix-preview/<path>, one at a time as each step needs them. Do not clone the repo.
 
+## Before you build (required)
+- Re-read the Klai Studio MCP system prompt at the start of every remix. Do not work from memory of an earlier turn.
+- Guides are MCP resources. Fetch each one as a resource (list resources, then read it); the get_guide tool does not count.
+- Read these before any structural page or site work, and log which ones you read. If one applies and you have not read it, stop and read it before saving:
+  - guide_pageSchema_v8
+  - guide_html_v8
+  - guide_javascript_v8
+  - assistantGuide_SITE_SCHEMA_REFERENCE
+  - assistantGuide_slots
+  - assistantGuide_fileMaker
+  - app_ai_guidance
+- Ask the user which server to use before creating the app or switching servers, even when the source app's server looks like the obvious choice. Never pick one yourself.
+
 ## Inputs
 The caller supplies these; every step refers to them by name. Defaults come from the team config note at the end.
 - **App name**: the client's app as they know it.
