@@ -98,4 +98,4 @@ Run the machine checks, fix what fails, re-run until all pass, then review scree
 6. Checklist complete, email drafted not sent, record written (step 17).
 
 ## Team config note
-Defaults for this team: backend type FileMaker (server plus helper file); owner Charles Delfs; design questions about the New tag go to Pearson; template apps "EOS Traction Board" redesign and "Grant Review Demo"; source-of-truth doc the Notion page "Skill: Klai App Remix Preview" (https://app.notion.com/p/40866058a9ec81d18da8e64a475ab313), synced one way, Notion first then this file. Targeting and open questions live on the Notion page "Remix Campaign — Win-Back Option".
+Defaults for this team: backend type FileMaker (server plus helper file); owner Charles Delfs; design questions about the New tag go to Pearson; template apps "EOS Traction Board" redesign and "Grant Review Demo".
