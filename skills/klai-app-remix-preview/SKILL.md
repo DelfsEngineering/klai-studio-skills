@@ -11,6 +11,8 @@ description: >-
 
 A remix shows a client their own app, redesigned for the people who actually use it and extended with one or two new features. It is a preview on Dev with mocked data, never a change to their live app.
 
+Load on demand: this file is https://raw.githubusercontent.com/DelfsEngineering/klai-studio-skills/main/skills/klai-app-remix-preview/SKILL.md. Fetch the references, scripts and assets it names from https://raw.githubusercontent.com/DelfsEngineering/klai-studio-skills/main/skills/klai-app-remix-preview/<path>, one at a time as each step needs them. Do not clone the repo.
+
 ## Inputs
 The caller supplies these; every step refers to them by name. Defaults come from the team config note at the end.
 - **App name**: the client's app as they know it.
