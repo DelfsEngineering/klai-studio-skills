@@ -18,8 +18,8 @@ At the start of every run, compare any local copy of this skill (for example `.c
 
 ## Before you build (required)
 - Re-read the Klai Studio MCP system prompt at the start of every remix. Do not work from memory of an earlier turn.
-- Guides are MCP resources on the Klai Studio v2 server. List that server's resources, then read each guide as a resource. If listing or reading any required guide fails, stop and report the exact error. Do not fall back to the get_guide tool; a get_guide result never counts, even when it returns the guide text.
-- Read these before any structural page or site work, and log which ones you read. If one applies and you have not read it, stop and read it before saving:
+- Guides are MCP resources on the Klai Studio v2 server. Fetch each guide as a resource at the point the work needs it, not all up front. If that fetch fails, stop and report the exact error. Do not fall back to the get_guide tool; a get_guide result never counts, even when it returns the guide text.
+- Fetch the matching guide right before the work it covers (page schema, HTML, JavaScript, site layouts and navigation, slots, FileMaker behavior, UI and brand), and log each one you read. If one applies and you have not read it, stop and read it before saving:
   - guide_pageSchema_v8
   - guide_html_v8
   - guide_javascript_v8
@@ -61,7 +61,7 @@ Gates block progress. They are not checklist items to tick off one by one: if a 
 **Gate A: before the first `mcp_update_schema` save.** All four must be in the record:
 1. A written user profile (see principles).
 2. An inventory written to a file per `references/inventory.md`, plus a parity file from `assets/parity-checklist.json` with every item `pending`.
-3. The guides from "Before you build" that apply, read as MCP resources, each one logged. `get_guide` output does not count.
+3. The guides from "Before you build" that the first save needs, read as MCP resources, each one logged. `get_guide` output does not count.
 4. The server, chosen by the user in chat. Do not pick it or recommend one.
 If any is missing, stop. No saves, no duplicated pages, no environment changes until it is met.
 
