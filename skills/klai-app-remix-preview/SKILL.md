@@ -3,8 +3,8 @@ name: klai-app-remix-preview
 description: >-
   Builds a redesigned, fully mocked preview ("remix") of an at-risk client's
   Klai Studio app in a new Dev environment, driven by a written profile of the
-  app's real users, then verifies it
-  for the owner. Use when someone asks for a remix, win-back preview, or
+  app's real users, then verifies it for the owner to review.
+  Use when someone asks for a remix, win-back preview, or
   redesigned demo of an existing client's Klai app.
 ---
 # Klai app remix preview
