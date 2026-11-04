@@ -2,7 +2,7 @@
 Newest first. Each entry: date, what changed, why, which run or request prompted it.
 
 ## 2026-10-29: restructure
-- What: split into SKILL.md (Inputs, three tiers, numbered workflow, verification-loop DoD) plus reference/, templates/, LESSONS.md, CHANGELOG.md and evals/. Moved targeting and open questions to the campaign page; moved people, template apps, backend name into Inputs and a team config note.
+- What: split into SKILL.md (Inputs, three tiers, numbered workflow, verification-loop DoD) plus references/, assets/, LESSONS.md, CHANGELOG.md and evals/. Moved targeting and open questions to the campaign page; moved people, template apps, backend name into Inputs and a team config note.
 - Why: skill-writing research (18 proposed changes) for a lean, client-agnostic, verifiable skill.
 - Prompted by: owner request on the 2026-10-29 call.
 
