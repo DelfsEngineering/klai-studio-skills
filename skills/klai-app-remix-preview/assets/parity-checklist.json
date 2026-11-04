@@ -1,0 +1,16 @@
+{
+  "_doc": "One entry per inventory item (step 2). status starts 'pending'; step 15 sets kept, moved or gap. moved needs 'where'; gap needs 'reason'. Done when no item is pending.",
+  "source": "{Source connection} / {source environment id}",
+  "target": "{Target app/env id}",
+  "items": [
+    {
+      "id": "page:{pageId}/field:{fieldKey}",
+      "type": "page | field | namedAction | component | navItem | hook | role | asset",
+      "name": "",
+      "purpose": "what it does for the user",
+      "status": "pending | kept | moved | gap",
+      "where": "remix location if moved",
+      "reason": "required if gap"
+    }
+  ]
+}
