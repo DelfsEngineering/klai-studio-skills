@@ -67,6 +67,7 @@ Gates block progress. They are not checklist items to tick off one by one: if a 
 If any is missing, stop. No saves, no duplicated pages, no environment changes until it is met.
 
 **Gate B: deploying is not done.** A remix is not done until a browser check has passed:
+- Lint first, before the browser check: scan every page's generated HTML for old-style action calls, that is a call to a function literally named `action` with a string (for example `action('name')`; a regex like `(?<![A-Za-z_.])action\s*\(\s*['"]` finds them). Log each hit in the record, convert it to `namedAction('name')`, save, and re-scan. The browser check does not start until the scan has zero hits.
 - At 390px and 1280px wide, in every theme, with a screenshot of each page at each width and theme. Check the profiled device first. Click every page, button, tile, role and theme; look for overlap, clipping, horizontal scroll, and empty, loading and error states.
 - Zero requests to the backend or helper in the browser's network log.
 - If no browser is available, mark the check FAILED in the record (not skipped) and do not call the remix done.
