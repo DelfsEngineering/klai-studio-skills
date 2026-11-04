@@ -51,6 +51,7 @@ Each is stated only here; later steps rely on it.
 - `assets/email.md`: the email draft for step 16.
 - `assets/parity-checklist.json`: schema for the parity file (steps 2 and 15).
 - `LESSONS.md`: anti-example, tool quirks and dated notes. Read before step 7.
+- `scripts/check_done.py`: machine checks for done items 1 and 3.
 - `CHANGELOG.md`: dated history of this skill.
 - `evals/`: three test scenarios; see `evals/README.md`.
 
@@ -88,7 +89,7 @@ Copy this checklist into the run's record and tick it off:
 18. Changelog. If the run changed this skill, add a `CHANGELOG.md` entry. Add a new rule only after the same failure is seen in more than one run, and log the triggering runs in `LESSONS.md`.
 
 ## Definition of done: verification loop
-Run the machine checks, fix what fails, re-run until all pass, then review screenshots.
+Run the machine checks, fix what fails, re-run until all pass, then review screenshots. Checks 1 and 3 are scripted: save each page's form from the target env to `pages.json`, then run `python3 scripts/check_done.py --pages pages.json --parity <parity file>` and keep its output in the record. It must exit 0.
 1. `requestHook` is false on every page (read each page's form).
 2. Zero requests to the backend or helper in the request log during step 13.
 3. The parity file has no `pending`; every `gap` has a reason.
