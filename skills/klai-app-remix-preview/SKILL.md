@@ -22,7 +22,6 @@ The caller supplies these; every step refers to them by name. Defaults come from
 - **Owner**: who reviews the result and sends the email.
 - **Contact**: the client person the email is addressed to.
 - **Backend type**: the client's data backend (for example a database server and helper file).
-- **Source-of-truth doc**: the page this skill is synced with.
 - **Template apps**: finished remixes to look at for quality bar, not for styling.
 
 Missing CS notes, contact or helper details do not stop a run; record what was missing.
