@@ -112,6 +112,8 @@ If any is missing, stop. No saves, no duplicated pages, no environment changes u
 
 ## Definition of done
 Done means Gates A, B and C passed and all of these hold. Run the checks, fix what fails, re-run until all pass. Checks 1 and 3 are scripted: save each page's form from the target env to `pages.json`, then run `python3 scripts/check_done.py --pages pages.json --parity <parity file>` and keep its output in the record. It must exit 0.
+
+There is no preview phase. While any item in this list is open, do not write a closing summary, call the run done or partial, or offer the rest as optional; keep working. Stop early only for a specific blocker you cannot clear, and write it in the record (what, where, what would unblock it).
 1. `requestHook` is false on every page (read each page's form).
 2. Gate B passed, including zero backend or helper requests.
 3. The parity file has no `pending`; every `gap` has a reason.
