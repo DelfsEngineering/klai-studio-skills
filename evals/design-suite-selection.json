@@ -1,0 +1,58 @@
+[
+  {
+    "id": "dir-brief-only",
+    "request": "Write a visual design direction for this field-service app from the users and brand. Do not edit screens.",
+    "expected": "klai-design-direction",
+    "must_match_expected": ["design direction", "visual brief", "before any UI"],
+    "handoff_in_expected": ["klai-ui-polish", "klai-ui-makeover", "klai-app-remix-preview"]
+  },
+  {
+    "id": "dir-brand-extract",
+    "request": "Extract a visual brief from our authorized public website; no UI changes.",
+    "expected": "klai-design-direction",
+    "must_match_expected": ["brand extraction"],
+    "handoff_in_expected": ["klai-ui-polish"]
+  },
+  {
+    "id": "polish-keep-look",
+    "request": "The dashboard looks sloppy. Keep the brand and layout; tighten spacing and states.",
+    "expected": "klai-ui-polish",
+    "must_match_expected": ["without changing workflows", "polish"],
+    "handoff_in_expected": ["klai-ui-makeover", "klai-app-remix-preview", "klai-design-direction"]
+  },
+  {
+    "id": "polish-unslop-nav",
+    "request": "Remove the glow on the nav; do not change workflows.",
+    "expected": "klai-ui-polish",
+    "must_match_expected": ["unslop", "spacing"],
+    "handoff_in_expected": ["klai-ui-makeover"]
+  },
+  {
+    "id": "makeover-new-look",
+    "request": "Give this app a new look and feel but keep every workflow and permission the same.",
+    "expected": "klai-ui-makeover",
+    "must_match_expected": ["visual system", "permissions"],
+    "handoff_in_expected": ["klai-ui-polish", "klai-app-remix-preview"]
+  },
+  {
+    "id": "makeover-filters-bar",
+    "request": "Rearrange the filters into one bar; same jobs; new visual system.",
+    "expected": "klai-ui-makeover",
+    "must_match_expected": ["rearrange presentation", "functionality"],
+    "handoff_in_expected": ["klai-app-remix-preview"]
+  },
+  {
+    "id": "remix-winback",
+    "request": "Remix this at-risk client's app with a new structure and a signature feature on a mocked Dev preview.",
+    "expected": "klai-app-remix-preview",
+    "must_match_expected": ["remix", "win-back"],
+    "handoff_in_expected": []
+  },
+  {
+    "id": "remix-workflows",
+    "request": "Redesign the workflows and information architecture of this Klai app as a win-back demo.",
+    "expected": "klai-app-remix-preview",
+    "must_match_expected": ["redesigned"],
+    "handoff_in_expected": []
+  }
+]
