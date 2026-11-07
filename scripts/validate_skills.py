@@ -140,8 +140,19 @@ def check_frontmatter(name: str, fails: list[str]) -> dict | None:
 
 def iter_md_files(skill_dir: Path):
     for p in skill_dir.rglob("*"):
-        if p.is_file() and p.suffix.lower() in {".md", ".json", ".py"}:
+        if p.is_file() and p.suffix.lower() in {".md", ".json", ".py", ".txt"}:
             yield p
+
+
+def skill_blob(name: str) -> str:
+    parts = []
+    root = SKILLS / name
+    for p in root.rglob("*"):
+        if not p.is_file():
+            continue
+        if p.suffix.lower() in {".md", ".json", ".txt"} or p.name == "NOTICE":
+            parts.append(p.read_text(errors="replace"))
+    return "\n".join(parts)
 
 
 def check_links(name: str, fails: list[str]) -> None:
@@ -177,15 +188,27 @@ def check_links(name: str, fails: list[str]) -> None:
 
 def check_credits(name: str, fails: list[str]) -> None:
     credit_path = SKILLS / name / "LICENSE-THIRD-PARTY.md"
+    notice_path = SKILLS / name / "NOTICE"
+    apache_path = SKILLS / name / "licenses" / "Apache-2.0.txt"
     if not credit_path.is_file():
         fails.append(f"{name}: missing LICENSE-THIRD-PARTY.md")
         return
-    blob = credit_path.read_text() + "\n" + (SKILLS / name / "SKILL.md").read_text()
+    if not notice_path.is_file():
+        fails.append(f"{name}: missing NOTICE (required Apache/CC/MIT attributions)")
+    if not apache_path.is_file() or "Apache License" not in apache_path.read_text():
+        fails.append(f"{name}: missing licenses/Apache-2.0.txt with Apache License text")
+    blob = skill_blob(name)
     for needle in REQUIRED_CREDITS[name]:
         if needle.lower() not in blob.lower() and needle not in blob:
             fails.append(f"{name}: missing required credit/phrase {needle!r}")
     if "CC BY 4.0" in blob and "Changes:" not in blob and "Changes :" not in blob:
         fails.append(f"{name}: CC BY adaptation must include a change note")
+    if "CC BY 4.0" in blob and "as-is" not in blob.lower() and "disclaimer of warranties" not in blob.lower():
+        fails.append(f"{name}: CC BY adaptation must include the as-is / warranty disclaimer")
+    if "Copyright (c) 2026 Leonxlnx" not in blob:
+        fails.append(f"{name}: missing Taste MIT copyright notice")
+    if "THE SOFTWARE IS PROVIDED \"AS IS\"" not in blob:
+        fails.append(f"{name}: missing MIT permission/disclaimer notice")
 
 
 def check_forbidden(name: str, fails: list[str]) -> None:
@@ -222,10 +245,26 @@ def check_selection(fails: list[str]) -> None:
         body = bodies[exp]
         desc = parse_frontmatter(body).get("description", "")
         hay = (desc + "\n" + body).lower()
+        folder = skill_blob(exp).lower() if exp in NEW_SKILLS else hay
         for needle in fx.get("must_match_expected", []):
             if needle.lower() not in hay:
                 fails.append(
-                    f"selection {fx['id']}: expected {exp} to contain {needle!r}"
+                    f"selection {fx['id']}: expected {exp} SKILL.md to contain {needle!r}"
+                )
+        for needle in fx.get("must_not_match_expected", []):
+            if needle.lower() in hay:
+                fails.append(
+                    f"selection {fx['id']}: {exp} SKILL.md must not contain {needle!r}"
+                )
+        for needle in fx.get("must_match_folder", []):
+            if needle.lower() not in folder:
+                fails.append(
+                    f"selection {fx['id']}: expected {exp} folder to contain {needle!r}"
+                )
+        for needle in fx.get("must_not_match_folder", []):
+            if needle.lower() in folder:
+                fails.append(
+                    f"selection {fx['id']}: {exp} folder must not contain {needle!r}"
                 )
         for other in fx.get("handoff_in_expected", []):
             if other not in body:

@@ -15,15 +15,25 @@ Required: **390** and **1280**, realistic heights. Add **768** and/or **1024** w
 All in-scope **themes**. All in-scope **roles** for permission checks.
 
 ## Behaviour
-From the preservation matrix, walk:
+From the preservation matrix, walk **without unauthorized writes**:
 
-- Primary job happy path
+- Primary job is still reachable (control present, labelled, in role)
 - Empty, loading, error
 - Long content
 - Permission: a lesser role does not run an admin action
-- Named actions still fire (or still mock if this env already mocks)
+- Named actions still **exist** with the same names and contracts
 
-Compare with baseline: no dropped control, no new permission.
+Compare with baseline: no dropped control, no new permission, no renamed route/hook/action ids.
+
+## Consequential live actions
+A Dev UI is **not** necessarily isolated data, email, payments, or deletion. Before any behavioural test that would click Save, Submit, Delete, Send, Pay, Print-to-backend, or fire a named action/hook:
+
+1. **Inspect effects.** Read the named action, hook, `requestHook`, and likely network.
+2. **Prefer isolation.** Disposable records and isolated or mocked services.
+3. **Actual authorization.** Fire the action only if the user, in this run, actually authorized that class of consequential action. Quote them in the record. A request to make over visuals is **not** that authorization, and "Dev edits don't need extra approval" is **not** a blanket OK to run live saves.
+4. **Otherwise block.** Mark the behaviour check **blocked**, not passed. Do not click.
+
+Visual/reachability checks can pass while the live fire stays blocked.
 
 ## Console / network
 When available, after each flow. New errors you caused are fails.

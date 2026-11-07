@@ -54,11 +54,13 @@ Audit items in scope are fixed or waived with a reason; verification matrix is r
 - **Known bugs**: overlap, unreadable tables, missing focus, and so on.
 
 ## Hard constraints
-- No workflow, IA, permission or data-contract changes. No new jobs, no removed jobs, no renamed routes unless the label was false and the user asked to fix wording.
+- No workflow, IA, permission or data-contract changes. No new jobs, no removed jobs.
+- Preserve **route ids**, layout slugs, hook names, named action names, and payload shapes. Visible **labels** (nav text, button captions, page titles) may change when the user asked to fix wording. A label is not a route id; do not rename identifiers to fix copy.
 - No replacement palette, type family or shape language. Tune tokens that already belong to the system; do not swap the system.
 - Dev writes only. No production deploy, no credentials, no helper-database changes, no email/Notion.
 - Do not install Playwright, designlang or other remote kits. Use sanctioned tools that are already available. Never bypass auth, approvals or site blocks.
 - `requestHook` and live backend calls stay as the app already intends. A **zero backend-request** rule applies only when this run is an explicitly isolated mocked preview. It is never a universal polish gate.
+- Visual/CSS edits on Dev do not need extra approval. That is **not** authorization to click save, delete, email, pay, or other consequential actions on a connected backend. Inspect effects first; use disposable records and isolated services; follow the user's actual authorization for that class of action; otherwise mark the check blocked. See [references/verify.md](references/verify.md).
 - Accessibility floors are not optional: text contrast 4.5:1, large text and icons 3:1, visible focus, keyboard path for every control you touch.
 - Aesthetic "never" lists are defaults, not bans. A brief or real brand can keep a violet accent, an eyebrow that carries status, or denser chrome. See [references/audit.md](references/audit.md). Do not apply marketing richness to operate chrome, and do not flatten a cover into a form toolbar. This skill does not change remix's written rules.
 
@@ -69,9 +71,9 @@ Create `polish-runs/<app-slug>/RECORD.md` first.
 2. **Baseline.** Follow [references/verify.md](references/verify.md) for captures: representative pages, 390 and 1280, plus any intermediate width where the layout actually breaks (often 768 and 1024), every in-scope theme. Label mocks vs live. Save before shots.
 3. **Discover the system.** [references/klai-feature-map.md](references/klai-feature-map.md). Read site CSS, theme, components, shared nav/slots, and the pages in scope. Fetch the Klai guide for the thing you are about to edit as an MCP resource when that guide exists (`guide_html_v8`, `assistantGuide_slots`, `assistantGuide_mcp_schema_save`, and so on). `get_guide` tool output is not a substitute when resources are how this team loads guides.
 4. **Audit by user impact.** [references/audit.md](references/audit.md). Priority: blocked tasks and contrast failures, then missing states, then density/type/spacing, then cosmetic drift.
-5. **Ordered passes.** [references/passes.md](references/passes.md). Finish a pass across the scoped path before the next. Do not perfect one card while the table is unreadable.
+5. **Ordered passes.** [references/passes.md](references/passes.md). Action and accessibility floors first (unclip primary actions, contrast, focus), then spacing and the rest. Finish a pass across the scoped path before the next. Do not perfect one card while a primary control is untappable.
 6. **States and overflow.** [references/states.md](references/states.md). Default, hover, focus, active, disabled, loading, error, empty, success. Dropdowns must escape clipping parents. Long content, empty, loading and error are real checks, not screenshots of the happy path.
-7. **Verify.** [references/verify.md](references/verify.md) again. Console and network if the browser tool can show them. Keyboard, contrast, reduced motion. Permissions and actions still do the same jobs. Mark anything unrun.
+7. **Verify.** [references/verify.md](references/verify.md) again. Console and network if the browser tool can show them. Keyboard, contrast, reduced motion. Do not fire consequential live actions without actual authorization. Mark anything unrun or blocked.
 8. **Diff hygiene.** No unrelated churn. Re-read after each save; Klai saves can report success without taking effect.
 9. **Report.** What changed, what was waived, verification evidence, blockers.
 
@@ -85,11 +87,11 @@ Templates: [assets/audit-template.md](assets/audit-template.md), [assets/record-
 - `references/klai-feature-map.md` — real Klai tools, no invented APIs.
 - `references/examples.md` — generic worked examples; do not copy.
 - `assets/audit-template.md`, `assets/record-template.md`
-- `LICENSE-THIRD-PARTY.md`, `evals/`, `CHANGELOG.md`
+- `LICENSE-THIRD-PARTY.md`, `NOTICE`, `licenses/Apache-2.0.txt`, `evals/`, `CHANGELOG.md`
 
 ## Definition of done
 1. Record shows baseline, audit, passes, verification.
-2. In-scope pages still complete the same jobs, with the same permissions and data shapes.
+2. In-scope pages still complete the same jobs, with the same permissions, route ids, hooks, named actions and data shapes. Visible labels may have been corrected; identifiers were not renamed.
 3. Visual system (brand colour role, type families, shell structure) is the incumbent system, executed better.
 4. Verification matrix: 390 and 1280 required; intermediate widths where risk exists; every in-scope theme; long/empty/loading/error; keyboard and contrast. Unrun cells named.
 5. Console/network inspected when the tool can; otherwise marked unavailable, not passed.

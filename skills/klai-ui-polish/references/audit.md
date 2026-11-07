@@ -15,7 +15,7 @@ Adapted in own words from Unslop's audit-then-triage and Impeccable polish's def
 Do not perfect a marketing cover while an operate table fails at 390.
 
 ## Baseline before opinions
-Open the scoped path as a user would. Note device, theme, role. Screenshot before changing. If the app needs auth you do not have, stop and record the blocker; do not bypass.
+Open the scoped path as a user would. Note device, theme, role. Screenshot before changing. If the app needs auth you do not have, stop and record the blocker; do not bypass. Do not click save, delete, email, or pay to "use the feature" unless the user actually authorized that consequential action; Dev is not automatically isolated.
 
 ## Tells (defaults, not bans)
 

@@ -39,7 +39,7 @@ If the user names two jobs ("write the brief and then make it over"), finish thi
 ## Entry criteria
 All of these, or stop and say what is missing:
 1. A target app or a concrete audience + jobs description. An app id or MCP connection is enough; a prose brief is enough if there is no app yet.
-2. Confirmation this run will **not** edit UI. If they already asked to restyle, still write the brief as the first artifact, then hand off without an extra approval gate for Dev work.
+2. This skill is **read-only**. That is a scope boundary, not a question to ask the user. Do not ask them to confirm that you will not edit UI. If they already asked to restyle, still write the brief as the first artifact, then hand off without an extra approval gate for Dev work.
 3. Any brand reference the user wants followed is an **authorized** public page, file or stated token. Do not scrape a competitor to copy a layout. Do not invent a brand the client did not offer.
 
 ## Exit criteria
@@ -87,6 +87,8 @@ Worked generic examples: [references/examples.md](references/examples.md). Selec
 - `references/examples.md` — illustrative generic worked examples; do not copy styling.
 - `assets/direction-template.md` — the artifact to fill.
 - `LICENSE-THIRD-PARTY.md` — credits, licenses, change notes.
+- `NOTICE` — required third-party notices.
+- `licenses/Apache-2.0.txt` — Apache 2.0 terms for adapted Apache-licensed methods.
 - `evals/` — selection and brief-quality scenarios.
 - `CHANGELOG.md` — dated history of this skill.
 

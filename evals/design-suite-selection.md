@@ -14,3 +14,10 @@ Used by `scripts/validate_skills.py` to check that each skill's description and 
 | makeover-filters-bar | Rearrange the filters into one bar; same jobs; new visual system. | klai-ui-makeover |
 | remix-winback | Remix this at-risk client's app with a new structure and a signature feature on a mocked Dev preview. | klai-app-remix-preview |
 | remix-workflows | Redesign the workflows and information architecture of this Klai app as a win-back demo. | klai-app-remix-preview |
+| dir-readonly-not-a-question | Direction-first handoff must not ask the user to confirm no UI edits. | klai-design-direction |
+| polish-live-side-effect-guard | Connected Dev polish must not fire save/email/pay/delete without actual authorization. | klai-ui-polish |
+| makeover-live-side-effect-guard | Connected Dev makeover: inspect effects; block unauthorized live fires. | klai-ui-makeover |
+| polish-route-vs-label | Labels may change; route/hook/action ids stay. | klai-ui-polish |
+| makeover-route-vs-label | Same id/contract default; labels distinguished. | klai-ui-makeover |
+| makeover-no-hypothetical-acceptance | Missing in-scope behaviour is a blocker unless out of scope or explicitly accepted. | klai-ui-makeover |
+| makeover-css-only-legitimate | CSS visual-system replacement may keep schema/class ids. | klai-ui-makeover |

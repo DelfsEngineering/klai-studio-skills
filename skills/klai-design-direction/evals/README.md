@@ -7,7 +7,7 @@ Shared selection fixtures for the whole suite: `evals/design-suite-selection.jso
 ## This skill should run
 1. **Brief only.** "Write a visual direction for this field checklist app from the users and our website." → direction. No UI edits. `DIRECTION.md` has audience, character without banned words, moments, quiet chrome, provenance, name-swap.
 2. **Brand extract.** "Match our public site; don't change the app yet." → direction. Tokens have URL + date + confidence. No layout clone. No `npx designlang`.
-3. **Prerequisite.** "Make it over, but we have no brief." → write direction first, then **hand off** to makeover. Direction skill does not restyle.
+3. **Prerequisite.** "Make it over, but we have no brief." → write direction first, then **hand off** to makeover. Direction skill does not restyle. Do **not** ask the user to confirm that this skill will not edit UI; read-only is a scope boundary.
 
 ## This skill should not run
 4. "Tighten spacing, keep the green." → polish.

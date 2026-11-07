@@ -43,13 +43,19 @@ If the tool can show them, after each main flow:
 **Zero backend requests** — check this **only** when the user (or the environment) is an explicitly isolated mocked preview. Ordinary polish of a connected Dev app **will** talk to its backend; that is expected. Do not fail polish for live requests.
 
 ## Interaction, not only screenshots
-- Click primary jobs.
-- Keyboard: tab to the primary action, operate it, escape menus.
-- Focus visible.
-- `prefers-reduced-motion` if the tool can emulate it; otherwise check CSS and mark emulation unrun.
-- Forced-colors / extra contrast if available; else unrun.
+Safe visual checks (no extra approval beyond the polish ask): screenshots, resize, hover, focus, tab order, open/close menus that do not commit, inspect empty/error/loading when already on screen or forceable without a write. Keyboard: tab to the primary action and confirm it is reachable and unclipped; do not press it if that would save, delete, email, or pay. Focus visible. `prefers-reduced-motion` if the tool can emulate it; otherwise check CSS and mark emulation unrun. Forced-colors / extra contrast if available; else unrun.
 
 Overlap, clipping, unexpected horizontal scroll: fail.
+
+## Consequential live actions
+A Dev UI is **not** necessarily isolated data, email, payments, or deletion. Before any behavioural test that would click Save, Submit, Delete, Send, Pay, Print-to-backend, or fire a named action/hook:
+
+1. **Inspect effects.** Read the named action, hook, `requestHook`, and likely network. Note whether it mutates records or triggers outbound services.
+2. **Prefer isolation.** Use disposable records and isolated or mocked services when those exist.
+3. **Actual authorization.** Fire the action only if the user, in this run, actually authorized that class of consequential action. Quote them in the record. A request to polish visuals is **not** that authorization, and "Dev edits don't need extra approval" is **not** a blanket OK to run live saves.
+4. **Otherwise block.** Mark the behaviour check **blocked**, not passed. Do not click.
+
+Visual verification of the control (visible, labelled, focused, not clipped) can still pass while the live fire stays blocked.
 
 ## Coverage vs ambition
 A small scoped polish does not need every page in the app. It does need every page you changed, plus the shared shell, at the matrix above.

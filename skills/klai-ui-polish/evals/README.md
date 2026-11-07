@@ -11,7 +11,9 @@
 6. "Win-back remix with a signature feature." → remix.
 
 ## Quality
-- Audit ordered by impact (clipped primary before icon optical alignment).
+- Audit ordered by impact (clipped primary before icon optical alignment). Passes start with action/accessibility, not spacing.
+- Labels may change; route/hook/action ids do not.
+- Connected Dev: inspect effects before any save/email/pay/delete; disposable records / isolated services; actual authorization or mark the fire blocked. Visual Dev edits do not grant a blanket live-action OK.
 - Zero-backend-request **not** applied to a connected Dev app.
 - Playwright not installed as a dependency of the run.
 - Unrun browser cells marked blocked, not passed.

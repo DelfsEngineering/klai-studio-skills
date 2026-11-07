@@ -14,7 +14,7 @@ Proceed only when at least one is true:
 Do not use a competitor, a template gallery, or a site whose design license is unknown as a layout source. If you are unsure whether you may use it, extract nothing expressive; ask, or stick to facts the owner stated.
 
 ## Do not install or execute remote extractors
-No `npm install`, no `npx designlang`, no cloned upstream scripts, no `postinstall` browser downloads. If a tool is already present in the environment, still prefer manual inspection so this skill stays portable. Never execute code fetched from the reference site.
+No `npm install`, no `npx designlang`, no cloned upstream scripts, no `postinstall` browser downloads. If a tool is already present in the environment, still prefer manual inspection so this skill stays portable. Never execute code fetched from the reference site. Do not submit forms, check out, or click purchase/contact on the reference site; computed-style reads and screenshots are enough.
 
 ## Manual extract (sanctioned browser or given files)
 

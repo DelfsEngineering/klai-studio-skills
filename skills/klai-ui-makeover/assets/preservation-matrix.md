@@ -2,7 +2,7 @@
 
 ```json
 {
-  "_doc": "Makeover contract. status starts pending. moved needs where. gap needs reason. Permissions and data must stay true.",
+  "_doc": "Makeover contract. status starts pending. moved needs where. gap needs out-of-scope proof or an explicit quoted owner acceptance — not a hypothetical reason. Route/hook/action ids stay. Labels may change. Permissions and data must stay true.",
   "app": "{name as the user said it}",
   "env": "dev-or-isolated-preview",
   "items": [
@@ -14,9 +14,14 @@
       "presentation_after": "",
       "status": "pending",
       "where": "",
+      "label_now": "",
+      "label_after": "",
       "reason": "",
+      "gap_basis": "none | outside_agreed_scope | explicit_acceptance_quoted",
+      "acceptance_quote": "",
       "permissions_unchanged": true,
-      "data_shape_unchanged": true
+      "data_shape_unchanged": true,
+      "ids_unchanged": true
     }
   ]
 }

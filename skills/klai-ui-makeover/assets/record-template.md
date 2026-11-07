@@ -16,7 +16,10 @@
 - [ ] Guides read (list):
 - [ ] Tokens / shell / components / pages
 - [ ] Matrix has no pending
-- [ ] Behaviour + permission verification
+- [ ] Behaviour + permission verification (reachability; live fire only if authorized)
+- [ ] Consequential actions inspected; disposable/isolated used or fire blocked
+- [ ] Gaps: none pending; none hypothetical
+- [ ] Route/hook/action ids unchanged; labels distinguished
 - [ ] Viewport matrix
 - [ ] Console / network (ran / unavailable)
 - [ ] Zero-backend-request (N/A unless isolated mock)

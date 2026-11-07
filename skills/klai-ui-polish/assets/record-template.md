@@ -16,6 +16,9 @@
 - [ ] States / overflow
 - [ ] Verification matrix
 - [ ] Console / network (ran / unavailable)
+- [ ] Consequential actions inspected; disposable/isolated used or fire blocked
+- [ ] Actual authorization quoted, or live fire marked blocked (not passed)
+- [ ] Route/hook/action ids unchanged; labels distinguished
 - [ ] Zero-backend-request (N/A unless isolated mock)
 - [ ] Re-read after saves
 - [ ] Closing summary
