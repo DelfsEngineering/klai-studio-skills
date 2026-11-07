@@ -1,0 +1,141 @@
+[
+  {
+    "id": "dir-brief-only",
+    "request": "Write a visual design direction for this field-service app from the users and brand. Do not edit screens.",
+    "expected": "klai-design-direction",
+    "must_match_expected": ["design direction", "visual brief", "before any UI"],
+    "handoff_in_expected": ["klai-ui-polish", "klai-ui-makeover", "klai-app-remix-preview"]
+  },
+  {
+    "id": "dir-brand-extract",
+    "request": "Extract a visual brief from our authorized public website; no UI changes.",
+    "expected": "klai-design-direction",
+    "must_match_expected": ["brand extraction"],
+    "handoff_in_expected": ["klai-ui-polish"]
+  },
+  {
+    "id": "polish-keep-look",
+    "request": "The dashboard looks sloppy. Keep the brand and layout; tighten spacing and states.",
+    "expected": "klai-ui-polish",
+    "must_match_expected": ["without changing workflows", "polish"],
+    "handoff_in_expected": ["klai-ui-makeover", "klai-app-remix-preview", "klai-design-direction"]
+  },
+  {
+    "id": "polish-unslop-nav",
+    "request": "Remove the glow on the nav; do not change workflows.",
+    "expected": "klai-ui-polish",
+    "must_match_expected": ["unslop", "spacing"],
+    "handoff_in_expected": ["klai-ui-makeover"]
+  },
+  {
+    "id": "makeover-new-look",
+    "request": "Give this app a new look and feel but keep every workflow and permission the same.",
+    "expected": "klai-ui-makeover",
+    "must_match_expected": ["visual system", "permissions"],
+    "handoff_in_expected": ["klai-ui-polish", "klai-app-remix-preview"]
+  },
+  {
+    "id": "makeover-filters-bar",
+    "request": "Rearrange the filters into one bar; same jobs; new visual system.",
+    "expected": "klai-ui-makeover",
+    "must_match_expected": ["rearrange presentation", "functionality"],
+    "handoff_in_expected": ["klai-app-remix-preview"]
+  },
+  {
+    "id": "remix-winback",
+    "request": "Remix this at-risk client's app with a new structure and a signature feature on a mocked Dev preview.",
+    "expected": "klai-app-remix-preview",
+    "must_match_expected": ["remix", "win-back"],
+    "handoff_in_expected": []
+  },
+  {
+    "id": "remix-workflows",
+    "request": "Redesign the workflows and information architecture of this Klai app as a win-back demo.",
+    "expected": "klai-app-remix-preview",
+    "must_match_expected": ["redesigned"],
+    "handoff_in_expected": []
+  },
+  {
+    "id": "dir-readonly-not-a-question",
+    "kind": "contract",
+    "request": "Make it over but write a brief first; do not ask me to confirm that direction will not edit UI.",
+    "expected": "klai-design-direction",
+    "must_match_expected": ["read-only", "not a question to ask"],
+    "must_not_match_expected": ["Confirmation this run will"],
+    "handoff_in_expected": ["klai-ui-makeover"]
+  },
+  {
+    "id": "polish-live-side-effect-guard",
+    "kind": "contract",
+    "request": "Polish a connected Dev app; do not fire live save, email, payment or deletion without authorization.",
+    "expected": "klai-ui-polish",
+    "must_match_folder": [
+      "consequential",
+      "disposable records",
+      "isolated",
+      "actual authorization",
+      "mark the behaviour check",
+      "blocked"
+    ],
+    "must_not_match_expected": ["Click primary jobs"],
+    "handoff_in_expected": []
+  },
+  {
+    "id": "makeover-live-side-effect-guard",
+    "kind": "contract",
+    "request": "Make over a connected Dev app; inspect effects before clicking save against live data.",
+    "expected": "klai-ui-makeover",
+    "must_match_folder": [
+      "consequential",
+      "disposable records",
+      "isolated",
+      "actual authorization",
+      "mark the behaviour check",
+      "blocked"
+    ],
+    "must_not_match_expected": ["Actions still run"],
+    "handoff_in_expected": []
+  },
+  {
+    "id": "polish-route-vs-label",
+    "kind": "contract",
+    "request": "Fix a misleading button caption; do not rename the route or named action.",
+    "expected": "klai-ui-polish",
+    "must_match_expected": ["route ids", "labels"],
+    "must_not_match_expected": ["renamed routes unless"],
+    "handoff_in_expected": []
+  },
+  {
+    "id": "makeover-route-vs-label",
+    "kind": "contract",
+    "request": "New look; keep hook and action names; you may clarify nav labels.",
+    "expected": "klai-ui-makeover",
+    "must_match_expected": ["route ids", "named action names", "labels"],
+    "must_not_match_folder": ["same names unless nothing calls them"],
+    "handoff_in_expected": []
+  },
+  {
+    "id": "makeover-no-hypothetical-acceptance",
+    "kind": "contract",
+    "request": "An in-scope Print action is missing after the makeover; do not assume the owner would accept that.",
+    "expected": "klai-ui-makeover",
+    "must_match_expected": ["explicitly accepted", "blocker"],
+    "must_not_match_expected": ["reason the owner can accept"],
+    "handoff_in_expected": []
+  },
+  {
+    "id": "makeover-css-only-legitimate",
+    "kind": "contract",
+    "request": "Replace the visual system in site CSS only; keep every page id, class, hook and named action.",
+    "expected": "klai-ui-makeover",
+    "must_match_folder": [
+      "perceptible",
+      "schema/class",
+      "hue-only"
+    ],
+    "must_not_match_folder": [
+      "schema and class names are the source's and only colours changed, you did not do a makeover"
+    ],
+    "handoff_in_expected": []
+  }
+]

@@ -1,0 +1,28 @@
+NOTICE
+
+This skill is original Klai Studio instruction text. It adapts methods
+(own wording) from third-party works listed below. It is not a copy of
+those works. Changes are described in LICENSE-THIRD-PARTY.md.
+
+Apache License 2.0 (full terms in licenses/Apache-2.0.txt):
+  Copyright 2025 Paul Bakaus
+  Project: Impeccable (https://github.com/pbakaus/impeccable)
+  Copyright (c) Microsoft Corporation
+  Project: Playwright CLI skill (https://github.com/microsoft/playwright-cli)
+  Neither upstream repository shipped a NOTICE file (checked 2026-11-07:
+  no NOTICE at repo root). This NOTICE records their copyright lines
+  required for Apache redistribution of adapted methods.
+
+Creative Commons Attribution 4.0 International
+  (https://creativecommons.org/licenses/by/4.0/):
+  Unslop by Damir Sokolovsky (@heydamir)
+  https://github.com/heydamir/unslop
+  Adapted. Licensed Material is offered as-is and as-available; see
+  CC BY 4.0 Section 5 (disclaimer of warranties).
+
+MIT License:
+  Copyright (c) 2026 Leonxlnx — Taste Skill
+  https://github.com/Leonxlnx/taste-skill
+  designlang@12.16.0 extract-design skill (package author: masyv; MIT
+  per package.json). Process idea only; not run.
+  MIT permission notices are reproduced in LICENSE-THIRD-PARTY.md.
