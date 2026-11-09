@@ -1,6 +1,11 @@
 # Changelog
 Newest first. Each entry: date, what changed, why, which run or request prompted it.
 
+## 2026-11-08: data-model guides
+- What: added `guide_dataModelsApp_v8` and `guide_dataModelsPage_v8` to the guides fetched before a save. Read them before saving a value that has to be there on a later page.
+- Why: those guides already cover the app model and page data model. The skill was not sending the run to them.
+- Prompted by: SCORRA remix review; Charles, 2026-11-08.
+
 ## 2026-11-04: principles and gates
 - What: replaced the 18-step checklist with three hard gates (A: profile, inventory and parity file, guides read as MCP resources, user-chosen server before the first save; B: browser check at 390px and 1280px in every theme with screenshots, zero backend requests, FAILED if no browser; C: never worse than the source) plus principles. LESSONS.md, the changelog and the email template are now shoulds. Added a start-of-run rule to compare any local copy with GitHub main and follow GitHub if they differ.
 - Why: a run followed a stale local copy and skipped steps one by one.

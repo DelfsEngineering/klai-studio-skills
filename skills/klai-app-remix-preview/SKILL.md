@@ -24,7 +24,7 @@ Third step, as soon as the server is in the record: create the empty remix app o
 - Run record: a live checklist at a fixed path. As the first step, create `remix-runs/<source-app-id>/RECORD.md` at the root of the working project, with a checklist of every required step (Before you build items, Gates A, B and C, each Definition of done check, closing summary), each marked done or not done. Update it as each piece of work completes, not at the end, and write decisions there as you make them (profile, inventory and parity files, guides read, server picked, gate results). Before moving to the next step, re-read the record, confirm nothing earlier is still open or skipped, and finish anything that is. Keep the inventory and parity files in the same folder. Use this path every run; if a record for that source app already exists, read it first and add a new dated run section.
 - Re-read the Klai Studio MCP system prompt at the start of every remix. Do not work from memory of an earlier turn.
 - Guides are MCP resources on the Klai Studio v2 server. Fetch each guide as a resource at the point the work needs it, not all up front. If that fetch fails, stop and report the exact error. Do not fall back to the get_guide tool; a get_guide result never counts, even when it returns the guide text.
-- Fetch the matching guide right before the work it covers (page schema, HTML, JavaScript, site layouts and navigation, slots, FileMaker behavior, UI and brand), and log each one you read. If one applies and you have not read it, stop and read it before saving:
+- Fetch the matching guide right before the work it covers (page schema, HTML, JavaScript, site layouts and navigation, slots, FileMaker behavior, UI and brand, app model and page data model), and log each one you read. If one applies and you have not read it, stop and read it before saving. Read the app and page data-model guides before saving a value that has to be there on a later page:
   - guide_pageSchema_v8
   - guide_html_v8
   - guide_javascript_v8
@@ -32,6 +32,8 @@ Third step, as soon as the server is in the record: create the empty remix app o
   - assistantGuide_slots
   - assistantGuide_fileMaker
   - app_ai_guidance
+  - guide_dataModelsApp_v8
+  - guide_dataModelsPage_v8
 
 ## Inputs
 The caller supplies these; the rest of this skill refers to them by name. Defaults come from the team config note at the end.
